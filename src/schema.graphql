@@ -1,0 +1,14 @@
+type Query {
+  transaction: [Transaction!]!
+}
+
+type Mutation {
+  post(title: String!, amount: Float!): Transaction!
+}
+
+type Transaction {
+  id: ID!
+  title: String!
+  amount: Float!
+  proceeded: Boolean
+}
