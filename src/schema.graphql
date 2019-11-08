@@ -1,5 +1,5 @@
 type Query {
-  transaction: [Transaction!]!
+  transactions: [Transaction!]!
 }
 
 type Mutation {
