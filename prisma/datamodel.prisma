@@ -4,5 +4,14 @@ type Transaction {
   title: String!
   amount: Float!
   proceeded: Boolean!
+  createdBy: User
 
+}
+
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  transactions: [Transaction!]!
 }
