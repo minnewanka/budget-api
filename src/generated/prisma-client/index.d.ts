@@ -147,6 +147,8 @@ export interface ClientConstructor<T> {
 export type TransactionOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "date_ASC"
+  | "date_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "title_ASC"
@@ -187,6 +189,14 @@ export interface TransactionWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  date?: Maybe<DateTimeInput>;
+  date_not?: Maybe<DateTimeInput>;
+  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_lt?: Maybe<DateTimeInput>;
+  date_lte?: Maybe<DateTimeInput>;
+  date_gt?: Maybe<DateTimeInput>;
+  date_gte?: Maybe<DateTimeInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -297,6 +307,7 @@ export type UserWhereUniqueInput = AtLeastOne<{
 
 export interface TransactionCreateInput {
   id?: Maybe<ID_Input>;
+  date: DateTimeInput;
   title: String;
   amount: Float;
   proceeded: Boolean;
@@ -316,6 +327,7 @@ export interface UserCreateWithoutTransactionsInput {
 }
 
 export interface TransactionUpdateInput {
+  date?: Maybe<DateTimeInput>;
   title?: Maybe<String>;
   amount?: Maybe<Float>;
   proceeded?: Maybe<Boolean>;
@@ -343,6 +355,7 @@ export interface UserUpsertWithoutTransactionsInput {
 }
 
 export interface TransactionUpdateManyMutationInput {
+  date?: Maybe<DateTimeInput>;
   title?: Maybe<String>;
   amount?: Maybe<Float>;
   proceeded?: Maybe<Boolean>;
@@ -366,6 +379,7 @@ export interface TransactionCreateManyWithoutCreatedByInput {
 
 export interface TransactionCreateWithoutCreatedByInput {
   id?: Maybe<ID_Input>;
+  date: DateTimeInput;
   title: String;
   amount: Float;
   proceeded: Boolean;
@@ -412,6 +426,7 @@ export interface TransactionUpdateWithWhereUniqueWithoutCreatedByInput {
 }
 
 export interface TransactionUpdateWithoutCreatedByDataInput {
+  date?: Maybe<DateTimeInput>;
   title?: Maybe<String>;
   amount?: Maybe<Float>;
   proceeded?: Maybe<Boolean>;
@@ -438,6 +453,14 @@ export interface TransactionScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  date?: Maybe<DateTimeInput>;
+  date_not?: Maybe<DateTimeInput>;
+  date_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  date_lt?: Maybe<DateTimeInput>;
+  date_lte?: Maybe<DateTimeInput>;
+  date_gt?: Maybe<DateTimeInput>;
+  date_gte?: Maybe<DateTimeInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -481,6 +504,7 @@ export interface TransactionUpdateManyWithWhereNestedInput {
 }
 
 export interface TransactionUpdateManyDataInput {
+  date?: Maybe<DateTimeInput>;
   title?: Maybe<String>;
   amount?: Maybe<Float>;
   proceeded?: Maybe<Boolean>;
@@ -526,6 +550,7 @@ export interface NodeNode {
 
 export interface Transaction {
   id: ID_Output;
+  date: DateTimeOutput;
   createdAt: DateTimeOutput;
   title: String;
   amount: Float;
@@ -534,6 +559,7 @@ export interface Transaction {
 
 export interface TransactionPromise extends Promise<Transaction>, Fragmentable {
   id: () => Promise<ID_Output>;
+  date: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   title: () => Promise<String>;
   amount: () => Promise<Float>;
@@ -545,6 +571,7 @@ export interface TransactionSubscription
   extends Promise<AsyncIterator<Transaction>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   title: () => Promise<AsyncIterator<String>>;
   amount: () => Promise<AsyncIterator<Float>>;
@@ -556,6 +583,7 @@ export interface TransactionNullablePromise
   extends Promise<Transaction | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  date: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   title: () => Promise<String>;
   amount: () => Promise<Float>;
@@ -798,6 +826,7 @@ export interface TransactionSubscriptionPayloadSubscription
 
 export interface TransactionPreviousValues {
   id: ID_Output;
+  date: DateTimeOutput;
   createdAt: DateTimeOutput;
   title: String;
   amount: Float;
@@ -808,6 +837,7 @@ export interface TransactionPreviousValuesPromise
   extends Promise<TransactionPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  date: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   title: () => Promise<String>;
   amount: () => Promise<Float>;
@@ -818,6 +848,7 @@ export interface TransactionPreviousValuesSubscription
   extends Promise<AsyncIterator<TransactionPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   title: () => Promise<AsyncIterator<String>>;
   amount: () => Promise<AsyncIterator<Float>>;

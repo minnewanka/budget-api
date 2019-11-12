@@ -5,6 +5,7 @@ const { APP_SECRET, getUserId } = require('../utils')
 function post(parent, args, context) {
   const userId = getUserId(context)
   return context.prisma.createTransaction({
+    date: args.date,
     title: args.title,
     amount: args.amount,
     proceeded: false,

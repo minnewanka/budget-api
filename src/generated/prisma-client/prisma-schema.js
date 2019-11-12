@@ -68,6 +68,7 @@ type Subscription {
 
 type Transaction {
   id: ID!
+  date: DateTime!
   createdAt: DateTime!
   title: String!
   amount: Float!
@@ -83,6 +84,7 @@ type TransactionConnection {
 
 input TransactionCreateInput {
   id: ID
+  date: DateTime!
   title: String!
   amount: Float!
   proceeded: Boolean!
@@ -96,6 +98,7 @@ input TransactionCreateManyWithoutCreatedByInput {
 
 input TransactionCreateWithoutCreatedByInput {
   id: ID
+  date: DateTime!
   title: String!
   amount: Float!
   proceeded: Boolean!
@@ -109,6 +112,8 @@ type TransactionEdge {
 enum TransactionOrderByInput {
   id_ASC
   id_DESC
+  date_ASC
+  date_DESC
   createdAt_ASC
   createdAt_DESC
   title_ASC
@@ -121,6 +126,7 @@ enum TransactionOrderByInput {
 
 type TransactionPreviousValues {
   id: ID!
+  date: DateTime!
   createdAt: DateTime!
   title: String!
   amount: Float!
@@ -142,6 +148,14 @@ input TransactionScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -198,6 +212,7 @@ input TransactionSubscriptionWhereInput {
 }
 
 input TransactionUpdateInput {
+  date: DateTime
   title: String
   amount: Float
   proceeded: Boolean
@@ -205,12 +220,14 @@ input TransactionUpdateInput {
 }
 
 input TransactionUpdateManyDataInput {
+  date: DateTime
   title: String
   amount: Float
   proceeded: Boolean
 }
 
 input TransactionUpdateManyMutationInput {
+  date: DateTime
   title: String
   amount: Float
   proceeded: Boolean
@@ -234,6 +251,7 @@ input TransactionUpdateManyWithWhereNestedInput {
 }
 
 input TransactionUpdateWithoutCreatedByDataInput {
+  date: DateTime
   title: String
   amount: Float
   proceeded: Boolean
@@ -265,6 +283,14 @@ input TransactionWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  date: DateTime
+  date_not: DateTime
+  date_in: [DateTime!]
+  date_not_in: [DateTime!]
+  date_lt: DateTime
+  date_lte: DateTime
+  date_gt: DateTime
+  date_gte: DateTime
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
