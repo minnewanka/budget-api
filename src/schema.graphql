@@ -1,9 +1,16 @@
 type Query {
-  transactions(filter: String, skip: Int, first: Int, begin: String, end: String): [Transaction!]!
+  transactions(
+    filter: String
+    skip: Int
+    first: Int
+    begin: String
+    end: String
+  ): [Transaction!]!
 }
 
 type Mutation {
-  post(title: String!, amount: Float!, date:String!): Transaction!
+  post(title: String!, amount: Float!, date: String!): Transaction!
+  deleteTransaction(id: ID!): Transaction
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
 }
