@@ -11,6 +11,7 @@ type Query {
 type Mutation {
   post(title: String!, amount: Float!, date: String!): Transaction!
   deleteTransaction(id: ID!): Transaction
+  updateTransaction(id: ID!, data: TransactionUpdateInput): Transaction!
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
 }
@@ -34,4 +35,10 @@ type Transaction {
   amount: Float!
   proceeded: Boolean
   createdBy: User
+}
+
+input TransactionUpdateInput {
+  date: String
+  title: String
+  amount: Float
 }

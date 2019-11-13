@@ -20,6 +20,21 @@ function deleteTransaction(parent, args, context) {
   });
 }
 
+function updateTransaction(parent, args, context) {
+  getUserId(context);
+  const {
+    data: { title, amount, date }
+  } = args;
+  return context.prisma.updateTransaction({
+    data: {
+      title: title ? title : undefined,
+      amount: amount ? amount : undefined,
+      date: date ? date : undefined
+    },
+    where: { id: args.id }
+  });
+}
+
 async function signup(parent, args, context, info) {
   const password = await bcrypt.hash(args.password, 10);
   const user = await context.prisma.createUser({ ...args, password });
@@ -49,4 +64,4 @@ async function login(parent, args, context, info) {
   };
 }
 
-module.exports = { signup, login, post, deleteTransaction };
+module.exports = { signup, login, post, deleteTransaction, updateTransaction };
