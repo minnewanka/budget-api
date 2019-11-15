@@ -9,6 +9,11 @@ function deletedTransactionSubscribe(parent, args, context, info) {
     .transaction({ mutation_in: ["DELETED"] })
     .previousValues();
 }
+function updatedTransactionSubscribe(parent, args, context, info) {
+  return context.prisma.$subscribe
+    .transaction({ mutation_in: ["UPDATED"] })
+    .node();
+}
 
 const newTransaction = {
   subscribe: newTransactionSubscribe,
@@ -25,4 +30,11 @@ const deletedTransaction = {
   }
 };
 
-module.exports = { newTransaction, deletedTransaction };
+const updatedTransaction = {
+  subscribe: updatedTransactionSubscribe,
+  resolve: payload => {
+    return payload;
+  }
+};
+
+module.exports = { newTransaction, deletedTransaction, updatedTransaction };

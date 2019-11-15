@@ -8,7 +8,7 @@ function post(parent, args, context) {
     date: args.date,
     title: args.title,
     amount: args.amount,
-    proceeded: false,
+    proceeded: true,
     createdBy: { connect: { id: userId } }
   });
 }
@@ -23,13 +23,14 @@ function deleteTransaction(parent, args, context) {
 function updateTransaction(parent, args, context) {
   getUserId(context);
   const {
-    data: { title, amount, date }
+    data: { title, amount, date, proceeded }
   } = args;
   return context.prisma.updateTransaction({
     data: {
       title: title ? title : undefined,
       amount: amount ? amount : undefined,
-      date: date ? date : undefined
+      date: date ? date : undefined,
+      proceeded: proceeded ? proceeded : false
     },
     where: { id: args.id }
   });

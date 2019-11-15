@@ -19,6 +19,7 @@ type Mutation {
 type Subscription {
   newTransaction: Transaction
   deletedTransaction: Transaction
+  updatedTransaction: Transaction
 }
 
 type AuthPayload {
@@ -46,4 +47,5 @@ input TransactionUpdateInput {
   date: String
   title: String
   amount: Float
+  proceeded: Boolean
 }
