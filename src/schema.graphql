@@ -16,6 +16,11 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload
 }
 
+type Subscription {
+  newTransaction: Transaction
+  deletedTransaction: Transaction
+}
+
 type AuthPayload {
   token: String
   user: User
